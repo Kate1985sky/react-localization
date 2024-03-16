@@ -1,13 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import "./i18n";
+import { useTranslation } from "react-i18next";
+import i18next from "./i18n";
 
 function App() {
+  const { t } = useTranslation();
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Edit <code>src/App.js</code> {t("save_reload")}
         </p>
         <a
           className="App-link"
@@ -15,8 +19,25 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          {t("learn_react")}
         </a>
+        <h2>{i18next.language}</h2>
+        <div>
+          <button
+            className="btn-react"
+            disabled={i18next.language === "en"}
+            onClick={() => i18next.changeLanguage("en")}
+          >
+            English
+          </button>
+          <button
+            className="btn-react"
+            disabled={i18next.language === "uk"}
+            onClick={() => i18next.changeLanguage("uk")}
+          >
+            Ukrainian
+          </button>
+        </div>
       </header>
     </div>
   );
