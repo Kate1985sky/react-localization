@@ -3,6 +3,7 @@ import "./App.css";
 import "./i18n";
 import { useTranslation } from "react-i18next";
 import i18next from "./i18n";
+import {LOCALS} from "./constants.js";
 
 function App() {
   const { t } = useTranslation();
@@ -25,17 +26,24 @@ function App() {
         <div>
           <button
             className="btn-react"
-            disabled={i18next.language === "en"}
+            disabled={i18next.language === LOCALS.EN}
             onClick={() => i18next.changeLanguage("en")}
           >
             English
           </button>
           <button
             className="btn-react"
-            disabled={i18next.language === "uk"}
+            disabled={i18next.language === LOCALS.UK}
             onClick={() => i18next.changeLanguage("uk")}
           >
             Ukrainian
+          </button>
+          <button
+            className="btn-react"
+            disabled={i18next.language === LOCALS.FR}
+            onClick={() => i18next.changeLanguage("fr")}
+          >
+            French
           </button>
         </div>
       </header>
